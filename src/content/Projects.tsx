@@ -3,6 +3,7 @@ import Window from '../components/Window';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu } from '../components/Menu';
 import { Title } from '../components/Title';
+import folderIcon from '../assets/icons8-folder.svg';
 
 
 export type ProjectItem = {
@@ -118,7 +119,7 @@ export default function Projects(): JSX.Element {
     return <Window
         id={'projects'}
         title="Projects"
-        icon={'src/assets/icons8-folder.svg'}
+        icon={folderIcon}
         canGoBack={true}>
         <div className="w-full h-full items-center flex">
             <Menu items={ProjectItems} selectedItem={selected} onSelectItem={setSelected}/>

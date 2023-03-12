@@ -2,6 +2,8 @@ import React from 'react';
 import Window from '../components/Window';
 import { Link, useLocation } from 'react-router-dom';
 import { Title } from '../components/Title';
+import aboutIcon from '../assets/about-svgrepo-com.svg';
+import flowerIcon from '../assets/chive-blossoms.png';
 
 export default function About(): JSX.Element {
     const location = useLocation();
@@ -9,12 +11,12 @@ export default function About(): JSX.Element {
     return <Window
         id={'about'}
         title={'Author\'s Note'}
-        icon="src/assets/about-svgrepo-com.svg"
+        icon={aboutIcon}
         canGoBack={false}
     >
         <>
             <div>
-                <img src={'src/assets/chive-blossoms.png'} className="rounded-lg max-h-32 max-w-32" alt="flower" />
+                <img src={flowerIcon} className="rounded-lg max-h-32 max-w-32" alt="flower" />
             </div>
 
             <Title title={'Meropi\'s Room' }/>

@@ -1,7 +1,8 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { BackIcon, CloseIcon, HomeIcon } from '../icons/Icons';
 import { toast } from 'react-toastify';
+import { useInterfaceContext } from './Interface';
 
 
 type WindowProps = {
@@ -14,36 +15,19 @@ type WindowProps = {
 }
 
 export default function Window({ id, title, icon, canGoBack, children, ...props }: WindowProps): JSX.Element {
-    const navigate = useNavigate();
-    const location = useLocation();
+    const [ showInterface, setShowInterface, pathname, setPathname ] = useInterfaceContext()!;
 
-    const goHome = useCallback(() => {
-        navigate('/');
-    }, [ ]);
+    const onClose = useCallback(() => {
+        setShowInterface(false);
+    }, [ setShowInterface ]);
 
-    const goBack = useCallback(() => {
-        if (location.state === null) {
-            navigate('/');
-        }
+    const navigate = useCallback((path: string) => {
+        setPathname(path);
+    }, [ setPathname ]);
 
-        if (location.state && location.state.previousPath) {
-            navigate(location.state.previousPath);
-        }
-    }, [ location.state ]);
-
-    const goExplore = useCallback(() => {
-        toast.info(<span className="text-sm font-medium">Click on the monitor's screen to open {title} again.</span>, {
-            position: 'top-right',
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: false,
-            theme: 'light',
-        });
-
-        navigate('/', { state: { exploration: true, previousPath: location.hash ? `${location.pathname}${location.hash}` : location.pathname } });
-    }, [ location.state ]);
-
+    if (!showInterface) {
+        return <></>;
+    }
 
     return <div id={`window-${id}`} className="content fixed overflow-hidden flex flex-col w-window h-window top-0 bottom-0 left-0 right-0 m-auto bg-white/[0.8] shadow rounded-lg z-40">
         <div className="window-header h-12 px-4 py-2 inline-flex justify-between items-center">
@@ -54,11 +38,13 @@ export default function Window({ id, title, icon, canGoBack, children, ...props 
 
             <div className="window-header-nav flex items-center">
                 {canGoBack && (<>
-                    <button className="btn p-2 hover:bg-gray-200 rounded mr-4" onClick={goHome}><HomeIcon /></button>
-                    <button className="btn p-2 hover:bg-gray-200 rounded" onClick={goBack}><BackIcon/></button>
+                    <button className="btn p-2 hover:bg-gray-200 rounded mr-4" onClick={(): void => {
+                        return navigate('/');
+                    }}><HomeIcon /></button>
+                    <button className="btn p-2 hover:bg-gray-200 rounded"><BackIcon/></button>
                 </>)}
 
-                <button className="btn p-2 hover:bg-gray-200 rounded" onClick={goExplore}><CloseIcon/></button>
+                <button className="btn p-2 hover:bg-gray-200 rounded" onClick={onClose}><CloseIcon/></button>
             </div>
         </div>
 

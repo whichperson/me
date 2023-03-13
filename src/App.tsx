@@ -1,10 +1,20 @@
-import React, { lazy } from 'react';
-// import Scene from './model/Scene';
+import React, { useEffect, useState } from 'react';
+import { InterfaceContextProvider } from './components/Interface';
+import { useProgress } from '@react-three/drei';
 
-const Scene = lazy(() => {
-    return import('./model/Scene');
+const Scene = React.lazy(() => {
+    return import('./content/Scene');
+});
+
+const Routes = React.lazy(() => {
+    return import('./components/Routes');
 });
 
 export default function App(): JSX.Element {
-    return <Scene />;
+    return <div id="container">
+        <InterfaceContextProvider>
+            <Scene/>
+            <Routes/>
+        </InterfaceContextProvider>
+    </div>;
 }

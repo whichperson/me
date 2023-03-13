@@ -1,12 +1,14 @@
 import React from 'react';
 import Window from '../components/Window';
 import { Title } from '../components/Title';
+import briefcaseIcon from '../assets/briefcase-svgrepo-com.svg';
+
 
 export default function Resume(): JSX.Element {
     return <Window
         id={'resume'}
         title={'Work'}
-        icon={'src/assets/briefcase-svgrepo-com.svg'}
+        icon={briefcaseIcon}
         canGoBack={true}>
         <>
             <Title title={'Resume'}/>

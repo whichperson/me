@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import * as THREE from 'three';
-import Room from './Room';
 import { Center, OrbitControls } from '@react-three/drei';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-
+import Room from './Room';
 
 export default function Scene(): JSX.Element {
     const navigate = useNavigate();

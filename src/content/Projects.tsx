@@ -64,7 +64,7 @@ export const Index = (): JSX.Element => {
         </div>
 
         <div className="mx-auto mt-12">
-            <Link className="btn bg-light hover:border-b-light text-white font-medium py-2 px-4 border-b-4 border-main rounded mr-6" to="/resume">View Resume</Link>
+            <Link className="btn bg-light hover:border-b-light text-white font-medium py-2 px-4 border-b-4 border-main rounded mr-6" to="/resume" state={{ previousPath: location.pathname }}>See Resume</Link>
             <Link className="btn bg-gray-400 hover:border-b-gray-400 text-white font-medium py-2 px-4 border-b-4 border-gray-600 rounded" to="http://github.com/whichperson" target="_blank">Visit Github</Link>
         </div>
 
@@ -124,7 +124,7 @@ export default function Projects(): JSX.Element {
         <div className="w-full h-full items-center flex">
             <Menu items={ProjectItems} selectedItem={selected} onSelectItem={setSelected}/>
 
-            <div id="projects-content" className="flex flex-col h-full w-full p-6 border-4 rounded-lg border-gray-100">
+            <div id="projects-content" className="flex flex-col h-full w-full py-2 px-4 border-4 rounded-lg border-gray-100">
                 {selected === null ?
                     <Index/> :
                     <Project

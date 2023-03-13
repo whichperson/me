@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { InterfaceContextProvider } from './components/Interface';
-import { useProgress } from '@react-three/drei';
+import { ToastContainer } from 'react-toastify';
 
 const Scene = React.lazy(() => {
     return import('./content/Scene');
@@ -14,6 +14,7 @@ export default function App(): JSX.Element {
     return <div id="container">
         <InterfaceContextProvider>
             <Scene/>
+            <ToastContainer/>
             <Routes/>
         </InterfaceContextProvider>
     </div>;

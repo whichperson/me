@@ -12,9 +12,11 @@ module.exports = {
             },
             width: {
                 window: 'calc(-50px + 60vw)',
+                windowMinimized: 'calc(-20px + 20vw)',
             },
             height: {
                 window: 'calc(-50px + 80vh)',
+                windowMinimized: 'calc(-50px + 15vh)',
             },
         },
     },

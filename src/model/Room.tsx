@@ -7,6 +7,8 @@ import React, { useMemo } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { GLTF } from 'three-stdlib';
 import room from '../assets/room/room_compressed.glb';
+import { useInterfaceContext } from '../components/Interface';
+import { toast } from 'react-toastify';
 
 
 type GLTFResult = GLTF & {
@@ -258,11 +260,6 @@ export default function Room(props: JSX.IntrinsicElements['group']): JSX.Element
                         position={[ 0, 0.06, 0 ]}
                     />
                     <mesh
-                        // onClick={(): void => {
-                        //     if (props.exploration) {
-                        //         navigate(location.state.previousPath);
-                        //     }
-                        // }}
                         name="screen"
                         receiveShadow
                         geometry={nodes.screen.geometry}
@@ -357,19 +354,17 @@ export default function Room(props: JSX.IntrinsicElements['group']): JSX.Element
                     scale={0.22}
                 >
                     <mesh
-                        // onClick={(): void => {
-                        //     if (props.exploration) {
-                        //         toast.warn(<span className="text-sm font-medium">Hey! Are you trying to steal my stuff?</span>, {
-                        //             position: 'top-right',
-                        //             icon: '🚨',
-                        //             autoClose: 2000,
-                        //             hideProgressBar: true,
-                        //             closeOnClick: true,
-                        //             pauseOnHover: false,
-                        //             theme: 'light',
-                        //         });
-                        //     }
-                        // }}
+                        onClick={(): void => {
+                            toast.warn(<span className="text-sm font-medium">Hey! Are you trying to steal my stuff?</span>, {
+                                position: 'top-right',
+                                icon: '🚨',
+                                autoClose: 2000,
+                                hideProgressBar: true,
+                                closeOnClick: true,
+                                pauseOnHover: false,
+                                theme: 'light',
+                            });
+                        }}
                         receiveShadow
                         name="Ipad_002"
                         geometry={nodes.Ipad_002.geometry}
@@ -428,19 +423,17 @@ export default function Room(props: JSX.IntrinsicElements['group']): JSX.Element
                         material={materials.Purple}
                     />
                     <mesh
-                        // onClick={(): void => {
-                        //     if (props.exploration) {
-                        //         toast.warn(<span className="text-sm font-medium">Beethoven's Symphony No. 7 in A</span>, {
-                        //             position: 'top-right',
-                        //             icon: '🎵',
-                        //             autoClose: 2000,
-                        //             hideProgressBar: true,
-                        //             closeOnClick: true,
-                        //             pauseOnHover: false,
-                        //             theme: 'light',
-                        //         });
-                        //     }
-                        // }}
+                        onClick={(): void => {
+                            toast.warn(<span className="text-sm font-medium">Beethoven's Symphony No. 7 in A</span>, {
+                                position: 'top-right',
+                                icon: '🎵',
+                                autoClose: 2000,
+                                hideProgressBar: true,
+                                closeOnClick: true,
+                                pauseOnHover: false,
+                                theme: 'light',
+                            });
+                        }}
                         name="Cylinder011"
                         geometry={nodes.Cylinder011.geometry}
                         material={materials.MetallicBlack}
@@ -1081,19 +1074,17 @@ export default function Room(props: JSX.IntrinsicElements['group']): JSX.Element
                     scale={1.12}
                 >
                     <mesh
-                        // onClick={(): void => {
-                        //     if (props.exploration) {
-                        //         toast.warn(<span className="text-sm font-medium">Did you poison my coffee?</span>, {
-                        //             icon: '💀',
-                        //             position: 'top-right',
-                        //             autoClose: 2000,
-                        //             hideProgressBar: true,
-                        //             closeOnClick: true,
-                        //             pauseOnHover: false,
-                        //             theme: 'light',
-                        //         });
-                        //     }
-                        // }}
+                        onClick={(): void => {
+                            toast.warn(<span className="text-sm font-medium">Did you poison my coffee?</span>, {
+                                icon: '💀',
+                                position: 'top-right',
+                                autoClose: 2000,
+                                hideProgressBar: true,
+                                closeOnClick: true,
+                                pauseOnHover: false,
+                                theme: 'light',
+                            });
+                        }}
                         name="Circle"
                         castShadow
                         receiveShadow

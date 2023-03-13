@@ -1,9 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { BackIcon, CloseIcon, HomeIcon } from '../icons/Icons';
-import { toast } from 'react-toastify';
 import { useInterfaceContext } from './Interface';
-import flower from '../assets/chive-blossoms.png';
 
 
 type WindowProps = {
@@ -18,7 +16,6 @@ type WindowProps = {
 export default function Window({ id, title, icon, canGoBack, children, ...props }: WindowProps): JSX.Element {
     const [ showInterface, setShowInterface ] = useInterfaceContext()!;
     const [ isMinimized, setIsMinimized ] = useState(false);
-    // const [ pathname, setPathname ] = useState('/');
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -30,29 +27,6 @@ export default function Window({ id, title, icon, canGoBack, children, ...props 
     const goTo = useCallback((path: string) => {
         navigate(path);
     }, [ ]);
-
-    // useEffect(() => {
-    //     setPathname(location.pathname);
-    // }, []);
-    //
-    // useEffect(() => {
-    //     if (pathname !== '/' && location.pathname !== pathname) {
-    //         navigate(pathname);
-    //     }
-    // }, [ pathname, setPathname ]);
-
-    // useEffect(() => {
-    //     if (location.pathname !== pathname) {
-    //         navigate(pathname);
-    //     }
-    // }, [ pathname ]);
-
-    // const navigate = useCallback((path: string) => {
-    //     setPathname(path);
-    // }, [ setPathname ]);
-    //
-    // const navigate = useNavigate();
-    // const location = useLocation();
 
     if (!showInterface) {
         return <></>;

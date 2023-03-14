@@ -14,7 +14,7 @@ type WindowProps = {
 }
 
 export default function Window({ id, title, icon, canGoBack, children, ...props }: WindowProps): JSX.Element {
-    const [ showInterface, setShowInterface ] = useInterfaceContext()!;
+    const [ showInterface ] = useInterfaceContext()!;
     const [ isMinimized, setIsMinimized ] = useState(false);
 
     const navigate = useNavigate();
@@ -34,15 +34,15 @@ export default function Window({ id, title, icon, canGoBack, children, ...props 
 
     return <>
         {isMinimized ?
-            (<div id={`window-${id}-minimized`} className="content fixed overflow-hidden z-40 w-windowMinimized h-windowMinimized bottom-10 left-0 right-0 m-auto bg-white/[0.8] shadow rounded-lg">
-                <button className="justify-center h-full w-full items-center flex" onClick={() => {
+            (<div id={`window-${id}-minimized`} className="content fixed overflow-hidden z-40 w-full lg:w-windowMinimized lg:h-windowMinimized bottom-0 lg:bottom-10 left-0 right-0 m-auto bg-white/[0.8] shadow rounded-lg">
+                <button className="justify-center h-full w-full items-center flex px-2 py-4" onClick={() => {
                     return minimizeWindow(false);
                 }}>
                     <img src={icon} className="max-h-8 max-w-8 mr-2" alt="window icon" />
                     <span className="text-medium font-medium">{title}</span>
                 </button>
             </div>) :
-            (<div id={`window-${id}`} className="content fixed overflow-hidden flex flex-col w-window h-window top-0 bottom-0 left-0 right-0 m-auto bg-white/[0.8] shadow rounded-lg z-40">
+            (<div id={`window-${id}`} className="content w-full h-full fixed overflow-hidden flex flex-col lg:w-window lg:h-window top-0 bottom-0 left-0 right-0 m-auto bg-white/[0.8] shadow rounded-lg z-40">
                 <div className="window-header h-12 px-4 py-2 inline-flex justify-between items-center">
                     <div className="window-header-title flex items-center">
                         {icon && <img src={icon} className="max-h-6 max-w-6 mr-2" alt="title icon" />}

@@ -1,11 +1,12 @@
 import React from 'react';
 import { Canvas } from '@react-three/fiber';
 import * as THREE from 'three';
-import { Center, Environment, OrbitControls } from '@react-three/drei';
+import { Center, OrbitControls } from '@react-three/drei';
 import Room from '../model/Room';
 
 export default function Scene(): JSX.Element {
     return <Canvas
+        frameloop="demand"
         shadows={{
             enabled: true,
             type: THREE.PCFSoftShadowMap,
@@ -24,10 +25,10 @@ export default function Scene(): JSX.Element {
             far: 100,
         }}
     >
-        <Environment preset="apartment" />
         <Center>
-            <ambientLight intensity={0.2} color="#cacaff" />
-            <directionalLight shadowCameraFar={20} shadowMapWidth={2048} shadowMapHeight={2048} shadowBias={0.05} castShadow={true} position={[ 20, 20, 40 ]} intensity={5} color="#6347FF" />
+            <ambientLight intensity={1} color="#FFFFFF" />
+            <rectAreaLight rotation={[ 1, 1, 1 ]} intensity={2} position={[ 3, 1.5, 2 ]} color="#f3c369"/>
+            <directionalLight shadowCameraFar={20} shadowMapWidth={2048} shadowMapHeight={2048} shadowBias={0.05} castShadow={true} position={[ 2, 4, 6 ]} intensity={4} color="#FFFFFF" />
             <Room position={[ 1, 1, 1 ]} scale={[ 1, 1, 1 ]}/>
         </Center>
         <OrbitControls

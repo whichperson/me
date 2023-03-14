@@ -63,12 +63,12 @@ export const Index = (): JSX.Element => {
             <span>Outside of my professional endeavours, I like to create projects based on whatever interests me at that moment, either for educational or entertainment purposes. If a project turns into something that may benefit from collaboration, I open-source it on GitHub. Some projects are still in progress, some are undergoing an overhaul, and others are in the recycling bin or rotting away in a folder until I remember their existence. Here, I showcase a handful of projects I have a soft spot for.</span>
         </div>
 
-        <div className="mx-auto mt-12">
-            <Link className="btn bg-light hover:border-b-light text-white font-medium py-2 px-4 border-b-4 border-main rounded mr-6" to="/resume" state={{ previousPath: location.pathname }}>See Resume</Link>
-            <Link className="btn bg-gray-400 hover:border-b-gray-400 text-white font-medium py-2 px-4 border-b-4 border-gray-600 rounded" to="http://github.com/whichperson" target="_blank">Visit Github</Link>
+        <div className="mt-4 flex flex-wrap items-center justify-center">
+            <Link className="btn bg-light hover:border-b-light text-white text-sm lg:text-base font-medium py-2 px-4 border-b-4 border-main rounded mt-4 mr-4" to="/resume" state={{ previousPath: location.pathname }}>See Resume</Link>
+            <Link className="btn bg-gray-400 hover:border-b-gray-400 text-white text-sm lg:text-base font-medium py-2 px-4 border-b-4 border-gray-600 rounded mt-4" to="http://github.com/whichperson" target="_blank">Visit Github</Link>
         </div>
 
-        <div className="mt-auto text-center">
+        <div className="text-center lg:mt-auto mt-4">
             <span className="italic text-sm">⚠️ You can click through the sidebar on the left to read about a project.</span>
         </div>
     </>;
@@ -88,10 +88,12 @@ export const Project = ({
         <div className="mt-4 text-left">
             <span className="font-medium capitalize">Tools</span>
 
-            <div className="mt-2">
+            <div className="flex flex-wrap">
                 {tools.length !== 0 && tools.map((tool, index) => {
+                    const marginRight = tools[tools.length - 1] === tool ? 'mr-0' : 'mr-2';
+
                     return (
-                        <span key={index} className="bg-gray-100 rounded px-6 py-1 mr-2 capitalize">{tool}</span>
+                        <span key={index} className={`${marginRight} mt-2 bg-gray-100 rounded px-6 py-1 capitalize`}>{tool}</span>
                     );
                 })}
             </div>
@@ -124,7 +126,7 @@ export default function Projects(): JSX.Element {
         <div className="w-full h-full items-center flex">
             <Menu items={ProjectItems} selectedItem={selected} onSelectItem={setSelected}/>
 
-            <div id="projects-content" className="flex flex-col h-full w-full py-2 px-4 border-4 rounded-lg border-gray-100">
+            <div id="projects-content" className="h-full w-full flex flex-col py-2 px-4 border-4 rounded-lg border-gray-100 overflow-scroll">
                 {selected === null ?
                     <Index/> :
                     <Project

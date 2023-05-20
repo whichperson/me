@@ -2,6 +2,7 @@ import React from 'react';
 import { InterfaceContextProvider } from './components/Interface';
 import { ToastContainer } from 'react-toastify';
 import Routes from './components/Routes';
+import Loading from './components/Loading';
 
 const Scene = React.lazy(() => {
     return import('./content/Scene');
@@ -11,9 +12,10 @@ const Scene = React.lazy(() => {
 export default function App(): JSX.Element {
     return <div id="container">
         <InterfaceContextProvider>
-            <Scene/>
-            <ToastContainer/>
-            <Routes/>
+            <Loading />
+            {/* <Scene/>*/}
+            {/* <ToastContainer/>*/}
+            {/* <Routes/>*/}
         </InterfaceContextProvider>
     </div>;
 }
